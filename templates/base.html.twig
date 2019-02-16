@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+	<meta charset="UTF-8">
+	<title>GrosbillMaker - {% block title %}Welcome!{% endblock %}</title>
+	<link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap_flatly.css') }}">
+	{% block stylesheets %}{% endblock %}
+</head>
+<body>
+	<nav class="navbar navbar-expand navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">Grosbill Maker</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item {% block indexActive %}{% endblock %}">
+				<a class="nav-link" href="{{ path("app_index") }}">Home</a>
+			</li>
+			<li class="nav-item {% block characterActive %}{% endblock %}">
+				<a class="nav-link" href="{{ path("app_index") }}">My Characters</a>
+			</li>
+			<li class="nav-item {% block createActive %}{% endblock %}">
+				<a class="nav-link" href="{{ path("app_index") }}">Create a character</a>
+			</li>
+			<li class="nav-item {% block aboutActive %}{% endblock %}">
+				<a class="nav-link" href="{{ path("app_index") }}">About</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="container">
+		{% block body %}{% endblock %}
+	</div>
+	{% block javascripts %}{% endblock %}
+</body>
 </html>

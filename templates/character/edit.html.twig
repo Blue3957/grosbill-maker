@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formCharacter "bootstrap_4_layout.html.twig" %}
+
+{% block title %}Hello CharacterController!{% endblock %}
+
+{% block body %}
+	{{ form_start(formCharacter) }}
+		{{ form_widget(formCharacter) }}
+		<button type="submit" class="btn btn-outline-primary">Ready !</button>
+	{{ form_end(formCharacter) }}
+{% endblock %}
