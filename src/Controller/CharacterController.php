@@ -56,11 +56,8 @@ class CharacterController extends AbstractController
 
     	$form->handleRequest($req);
 
-    	dump($req);
-
     	if($form->isSubmitted())
     	{
-    		dump($character);
     		$manager->persist($character);
     		$manager->flush();
 
