@@ -3,18 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GrosbillMaker - {% block title %}Welcome!{% endblock %}</title>
-	<link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap_flatly.css') }}">
+	<link rel="stylesheet" href="{{ 'https://bootswatch.com/4/superhero/bootstrap.min.css' }}">
 	{% block stylesheets %}{% endblock %}
 </head>
 <body>
-	<nav class="navbar navbar-expand navbar-dark bg-primary">
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Grosbill Maker</a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item {% block indexActive %}{% endblock %}">
 				<a class="nav-link" href="{{ path("app_index") }}">Home</a>
 			</li>
 			<li class="nav-item {% block characterActive %}{% endblock %}">
-				<a class="nav-link" href="{{ path("app_index") }}">My Characters</a>
+				<a class="nav-link" href="{{ path("character_list") }}">My Characters</a>
 			</li>
 			<li class="nav-item {% block createActive %}{% endblock %}">
 				<a class="nav-link" href="{{ path("character_create") }}">Create a character</a>

@@ -11,16 +11,20 @@ use App\Entity\Race;
 use App\Entity\Job;
 use App\Entity\Alignment;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Repository\CharacterRepository;
 
 class CharacterController extends AbstractController
 {
     /**
      * @Route("/character", name="character_list")
      */
-    public function list()
+    public function list(CharacterRepository $repo)
     {
-        return $this->render('character/index.html.twig', [
-            'controller_name' => 'CharacterController',
+        $characterList = $repo->findAll();
+
+        dump($characterList);
+        return $this->render('character/list.html.twig', [
+            'characterList' => $characterList
         ]);
     }
 
