@@ -15,9 +15,13 @@
 							<h5>Lvl {{ character.level }}</h5>
 							<h5>{{ character.race.name }} {{ character.job.name }}</h5>
 						</div>
-						<div class="card-text" style="overflow:auto;">
-							<p>{% if character.description %}{{ character.description }}{% else %}Pas de description{% endif %}</p>
+						<div class="card-text" style="overflow:auto">
+							<p>{% if character.description %}{{ character.description }}{% else %}No description{% endif %}</p>
 						</div>
+					</div>
+					<div class="card-footer">
+						<a href="{{ path("character_detail", {'id': character.id}) }}" class="btn btn-secondary float-left align-self-end">Detail</a>
+						<a href="{{ path("character_edit", {'id': character.id}) }}" class="btn btn-warning float-right">Edit</a>
 					</div>
 				</div>
 			</div>

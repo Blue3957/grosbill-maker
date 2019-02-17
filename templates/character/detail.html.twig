@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ character.name }}{% endblock %}
+
+{% block characterActive %}active{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-lg-6 mx-auto" style="padding:10px;">
+			<div class="card text-center text-white bg-primary mb-3" style="height:100%; max-height:800px">
+				<div class="card-head"><h3>{{ character.name | title }}</h3></div>
+				<div class="card-body">
+					<div class="card-title">
+						<h5>Lvl {{ character.level }}</h5>
+						<h5>{{ character.race.name }} {{ character.job.name }}</h5>
+					</div>
+					<div class="card-text" style="max-height:500px;overflow:auto">
+						<p>{% if character.description %}{{ character.description }}{% else %}No description{% endif %}</p>
+						<hr>
+						<p>{% if character.bio %}{{ character.bio | nl2br }}{% else %}No Biography{% endif %}</p>
+
+					</div>
+				</div>
+				<div class="card-footer">
+					<a href="{{ path("character_edit", {'id': character.id}) }}" class="btn btn-warning float-right">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

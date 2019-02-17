@@ -29,6 +29,21 @@ class CharacterController extends AbstractController
     }
 
     /**
+     * @Route("/character/{id<\d+>}", name="character_detail")
+     */
+    public function detail(Character $character)
+    {
+        if(is_null($character))
+        {
+            return $this->redirectToRoute("character_list");
+        }
+
+        return $this->render('character/detail.html.twig', [
+            'character' => $character
+        ]);
+    }
+
+    /**
      * @Route("/character/new", name="character_create")
      * @Route("/character/{id<\d+>}/edit", name="character_edit")
      */
