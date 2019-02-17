@@ -19,7 +19,7 @@ class CharacterController extends AbstractController
      * @Route("/character", name="character_list")
      * @Route("/character/by_{field}", name="character_list_sorted")
      */
-    public function list(CharacterRepository $repo, $field = null)
+    public function list(CharacterRepository $repo, $field = 'favorite')
     {
         $characterList = $repo->findAll($field);
 
