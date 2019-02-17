@@ -23,7 +23,6 @@ class CharacterController extends AbstractController
     {
         $characterList = $repo->findAll($field);
 
-        dump($characterList);
         return $this->render('character/list.html.twig', [
             'characterList' => $characterList
         ]);
@@ -84,11 +83,34 @@ class CharacterController extends AbstractController
     		return $this->redirectToRoute("character_list");
     	}
 
-        dump($form->createView());
     	return $this->render('character/edit.html.twig', [
+            "character" => $character,
     		"formCharacter" => $form->createView(),
     		"isEditMode" => !is_null($character->getId())
     	]);
 
+    }
+
+    /**
+     * @Route("/character/{id<\d+>}/delete", name="character_delete")
+     */
+    public function delete(ObjectManager $manager, Request $req, Character $character)
+    {
+        $form = $this->createFormBuilder($character)
+                     ->getForm();
+
+        $form->handleRequest($req);
+
+        if($form->isSubmitted())
+        {
+            $manager->remove($character);
+            $manager->flush();
+
+            return $this->redirectToRoute("character_list");
+        }
+
+        return $this->render('character/delete.html.twig', [
+            "formCharacter" => $form->createView(),
+        ]);
     }
 }

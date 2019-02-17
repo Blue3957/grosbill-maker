@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CharacterController!{% endblock %}
+
+{% block stylesheets %}
+	<style>
+		label.required:after {
+ 			content: "";
+		}
+		label:after {
+			content: "  (optional)";
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Confirm suppression?</h1>
+	<br>
+	<div class="container text-center">
+		{{ form_start(formCharacter) }}
+			{{ form_widget(formCharacter) }}
+			<button type="submit" class="btn btn-outline-danger">Yes</button>
+			<a href="{{ path("character_list") }}" class="btn btn-outline-info">Cancel</a>
+		{{ form_end(formCharacter) }}
+	</div>
+{% endblock %}

@@ -19,5 +19,8 @@
 	{{ form_start(formCharacter) }}
 		{{ form_widget(formCharacter) }}
 		<button type="submit" class="btn btn-outline-primary">Ready !</button>
+		{% if(isEditMode) %}
+			<a href="{{ path("character_delete", {'id': character.id}) }}" class="btn btn-outline-danger float-right">Delete character</a>
+		{% endif %}
 	{{ form_end(formCharacter) }}
 {% endblock %}
