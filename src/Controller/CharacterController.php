@@ -18,9 +18,9 @@ class CharacterController extends AbstractController
     /**
      * @Route("/character", name="character_list")
      */
-    public function list(CharacterRepository $repo)
+    public function list(CharacterRepository $repo, $orderBy = null)
     {
-        $characterList = $repo->findAll();
+        $characterList = $repo->findAll($orderBy);
 
         dump($characterList);
         return $this->render('character/list.html.twig', [

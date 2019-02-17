@@ -19,6 +19,20 @@ class CharacterRepository extends ServiceEntityRepository
         parent::__construct($registry, Character::class);
     }
 
+    public function findAll($orderBy = null)
+    {
+        if($orderBy)
+        {
+            $result = $this->findBy(array(), array($orderBy => 'ASC'));
+        }
+        else
+        {
+            $result = $this->findBy(array());
+        }
+
+        return  $result;
+    }
+
     // /**
     //  * @return Character[] Returns an array of Character objects
     //  */
