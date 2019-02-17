@@ -4,6 +4,17 @@
 
 {% block title %}Hello CharacterController!{% endblock %}
 
+{% block stylesheets %}
+	<style>
+		label.required:after {
+ 			content: "";
+		}
+		label:after {
+			content: "  (optional)";
+		}
+	</style>
+{% endblock %}
+
 {% block body %}
 	{{ form_start(formCharacter) }}
 		{{ form_widget(formCharacter) }}

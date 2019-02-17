@@ -84,6 +84,7 @@ class CharacterController extends AbstractController
     		return $this->redirectToRoute("character_list");
     	}
 
+        dump($form->createView());
     	return $this->render('character/edit.html.twig', [
     		"formCharacter" => $form->createView(),
     		"isEditMode" => !is_null($character->getId())
