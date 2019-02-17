@@ -17,10 +17,11 @@ class CharacterController extends AbstractController
 {
     /**
      * @Route("/character", name="character_list")
+     * @Route("/character/by_{field}", name="character_list_sorted")
      */
-    public function list(CharacterRepository $repo, $orderBy = null)
+    public function list(CharacterRepository $repo, $field = null)
     {
-        $characterList = $repo->findAll($orderBy);
+        $characterList = $repo->findAll($field);
 
         dump($characterList);
         return $this->render('character/list.html.twig', [

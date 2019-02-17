@@ -5,6 +5,14 @@
 {% block characterActive %}active{% endblock %}
 
 {% block body %}
+	<div class="container text-center">
+			<div class="btn-group" role="group">	
+				<a href="{{ path("character_list_sorted", {'field': 'id'}) }}" class="btn btn-outline-secondary">Order by id</a>
+				<a href="{{ path("character_list_sorted", {'field': 'name'}) }}" class="btn btn-outline-secondary">Order by name</a>
+				<a href="{{ path("character_list_sorted", {'field': 'race'}) }}" class="btn btn-outline-secondary">Order by race</a>
+				<a href="{{ path("character_list_sorted", {'field': 'job'}) }}" class="btn btn-outline-secondary">Order by class</a>
+			</div>
+	</div>
 	<div class="row">
 		{% for character in characterList %}
 			<div class="col-lg-4" style="padding:10px;">
