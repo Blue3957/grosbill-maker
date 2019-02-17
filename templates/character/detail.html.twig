@@ -14,14 +14,14 @@
 						<h5>Lvl {{ character.level }}</h5>
 						<h5>{{ character.race.name }} {{ character.job.name }}</h5>
 					</div>
-					<div class="card-text" style="max-height:500px;overflow:auto">
+					<div class="card-text" style="max-height:500px;">
 						<p>{% if character.description %}{{ character.description }}{% else %}No description{% endif %}</p>
 						<hr>
-						<p>{% if character.bio %}{{ character.bio | nl2br }}{% else %}No Biography{% endif %}</p>
-
+						<p style="max-height:300px;overflow:auto">{% if character.bio %}{{ character.bio | nl2br }}{% else %}No Biography{% endif %}</p>
 					</div>
 				</div>
 				<div class="card-footer">
+					<a href="{{ path("character_list", {'id': character.id}) }}" class="btn btn-info float-left">Back to list</a>
 					<a href="{{ path("character_edit", {'id': character.id}) }}" class="btn btn-warning float-right">Edit</a>
 				</div>
 			</div>
