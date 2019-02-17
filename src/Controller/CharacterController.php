@@ -24,7 +24,8 @@ class CharacterController extends AbstractController
         $characterList = $repo->findAll($field);
 
         return $this->render('character/list.html.twig', [
-            'characterList' => $characterList
+            'characterList' => $characterList,
+            'orderedBy' => $field
         ]);
     }
 
@@ -41,6 +42,23 @@ class CharacterController extends AbstractController
         return $this->render('character/detail.html.twig', [
             'character' => $character
         ]);
+    }
+
+    /**
+     * @Route("/character/favorite/{id<\d+>}/by_{field}", name="character_favorite")
+     */
+    public function favorite(ObjectManager $manager, Character $character, $field = null)
+    {
+        if($character->getFavorite())
+        {
+        $character->setFavorite(false);
+        }
+        else $character->setFavorite(true);
+
+        $manager->persist($character);
+        $manager->flush();
+
+        return $this->redirectToRoute("character_list_sorted", ['field' => $field]);
     }
 
     /**

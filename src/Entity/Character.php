@@ -55,6 +55,11 @@ class Character
      */
     private $level;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $favorite;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +145,18 @@ class Character
     public function setLevel(int $level): self
     {
         $this->level = $level;
+
+        return $this;
+    }
+
+    public function getFavorite(): ?bool
+    {
+        return $this->favorite;
+    }
+
+    public function setFavorite(?bool $favorite): self
+    {
+        $this->favorite = $favorite;
 
         return $this;
     }

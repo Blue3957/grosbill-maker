@@ -23,7 +23,11 @@ class CharacterRepository extends ServiceEntityRepository
     {
         if($orderBy)
         {
-            $result = $this->findBy(array(), array($orderBy => 'ASC'));
+            if($orderBy === 'favorite')
+            {
+                $result = $this->findBy(array(), array($orderBy => 'DESC'));
+            }
+            else $result = $this->findBy(array(), array($orderBy => 'ASC'));
         }
         else
         {
