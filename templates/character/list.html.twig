@@ -16,9 +16,9 @@
 	<div class="container text-center">
 			<div class="btn-group" role="group">	
 				<a href="{{ path("character_list_sorted", {'field': 'favorite'}) }}" class="btn btn-{% if orderedBy != 'favorite' %}outline-{% endif %}secondary">Order by favorite</a>
-				<a href="{{ path("character_list_sorted", {'field': 'name'}) }}" class="btn btn-{% if orderedBy != 'name' %}outline-{% endif %}secondary">Order by name</a>
-				<a href="{{ path("character_list_sorted", {'field': 'race'}) }}" class="btn btn-{% if orderedBy != 'race' %}outline-{% endif %}secondary">Order by race</a>
-				<a href="{{ path("character_list_sorted", {'field': 'job'}) }}" class="btn btn-{% if orderedBy != 'job' %}outline-{% endif %}secondary">Order by class</a>
+				<a href="{{ path("character_list_sorted", {'field': 'name'})     }}" class="btn btn-{% if orderedBy != 'name'     %}outline-{% endif %}secondary">Order by name</a>
+				<a href="{{ path("character_list_sorted", {'field': 'race'})     }}" class="btn btn-{% if orderedBy != 'race'     %}outline-{% endif %}secondary">Order by race</a>
+				<a href="{{ path("character_list_sorted", {'field': 'job'})      }}" class="btn btn-{% if orderedBy != 'job'      %}outline-{% endif %}secondary">Order by class</a>
 			</div>
 	</div>
 	<div class="row">
@@ -37,7 +37,15 @@
 					</div>
 					<div class="card-footer">
 						<a href="{{ path("character_detail", {'id': character.id}) }}" class="btn btn-secondary float-left align-self-end">Detail</a>
-						<a href="{{ path("character_favorite", {'id': character.id, 'field': orderedBy }) }}">{% if character.favorite %}<i class="fas fa-star fa-lg align-bottom"></i>{% else %}<i class="far fa-star fa-lg align-bottom"></i>{% endif %}</a>
+						
+						<a href="{{ path("character_favorite", {'id': character.id, 'field': orderedBy }) }}">
+							{% if character.favorite %}
+								<i class="fas fa-star fa-lg align-bottom"></i>
+							{% else %}
+								<i class="far fa-star fa-lg align-bottom"></i>
+							{% endif %}
+						</a>
+
 						<a href="{{ path("character_edit", {'id': character.id}) }}" class="btn btn-warning float-right">Edit</a>
 					</div>
 				</div>
